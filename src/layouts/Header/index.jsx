@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import argentBankLogo from '../../assets/argentBankLogo.png'
-import SignInHeaderButton from "../../components/SignButton";
+import SignInHeaderButton from "../../components/SignInHeaderButton";
 
 const HeaderWrapper = styled.nav`
   display: flex;

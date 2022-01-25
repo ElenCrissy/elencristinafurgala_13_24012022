@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Footer from "../../layouts/Footer";
-import Header from "../../layouts/Header";
 import Hero from "../../layouts/HomePageContent/Hero";
 import Feature from "../../layouts/HomePageContent/Feature";
 
@@ -11,10 +9,8 @@ const HomePageWrapper = styled.div`
 const HomePage = () => {
     return (
         <HomePageWrapper>
-            <Header/>
             <Hero/>
             <Feature/>
-            <Footer/>
         </HomePageWrapper>
     )
 }
