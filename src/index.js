@@ -14,7 +14,7 @@ const HeaderWithRouter = withRouter(Header);
 ReactDOM.render(
   <React.StrictMode>
       <Router>
-      <HeaderWithRouter/>
+          <HeaderWithRouter/>
           <Switch>
               <Route exact path="/" component={HomePage} />
               <Route path="/signin" component={SignIn} />
