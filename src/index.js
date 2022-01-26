@@ -18,7 +18,7 @@ ReactDOM.render(
           <Switch>
               <Route exact path="/" component={HomePage} />
               <Route path="/signin" component={SignIn} />
-              <Route path="/user/:id" component={User} />
+              <Route path="/user" component={User} />
           </Switch>
           <Footer/>
       </Router>
