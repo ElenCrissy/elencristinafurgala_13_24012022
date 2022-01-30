@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons'
-import {Link} from "react-router-dom";
 
 const SignInHeaderButtonWrapper = styled.div`
   a{
@@ -24,10 +23,10 @@ const SignInHeaderButtonWrapper = styled.div`
 const SignInHeaderButton = () => {
     return(
         <SignInHeaderButtonWrapper>
-            <Link to="/signin">
+            <a href="/signin">
                 <FontAwesomeIcon icon={faUserCircle}/>
                 Sign in
-            </Link>
+            </a>
         </SignInHeaderButtonWrapper>
     )
 }

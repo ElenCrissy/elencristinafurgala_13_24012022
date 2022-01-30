@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Account from "../../components/Account";
+import {Layout} from "../../layouts/Layout";
 
 const UserWrapper = styled.main`
   width: 100%;

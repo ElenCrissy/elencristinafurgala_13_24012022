@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import argentBankLogo from '../../assets/argentBankLogo.png'
 import SignInHeaderButton from "../../components/SignInHeaderButton";
-import {Link} from "react-router-dom";
 
 const HeaderWrapper = styled.nav`
   display: flex;
@@ -10,7 +9,8 @@ const HeaderWrapper = styled.nav`
   padding: 5px 20px;
 `
 
-const Logo = styled(Link)`
+const Logo = styled.a`
+  display: inline-block;
   font-weight: bold;
   color: #2c3e50;
   img{
@@ -22,7 +22,7 @@ const Logo = styled(Link)`
 const Header = () => {
     return(
         <HeaderWrapper>
-            <Logo to="/">
+            <Logo href="/">
                 <img alt={"Argent Bank Logo"} src={argentBankLogo}/>
             </Logo>
             <SignInHeaderButton/>
