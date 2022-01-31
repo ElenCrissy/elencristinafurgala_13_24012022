@@ -39,14 +39,14 @@ const LoginForm = () => {
         <LoginFormWrapper>
             <InputWrapper>
                 <label for={"username"}>Username</label>
-                <input type={"text"} id={"username"}/>
+                <input type={"text"} id={"username"} value={"username"}/>
             </InputWrapper>
             <InputWrapper>
-                <label for={"password"}>Password</label>
-                <input type={"password"} id={"password"}/>
+                <label for={"password"} >Password</label>
+                <input type={"password"} id={"password"} value={"password"}/>
             </InputWrapper>
             <InputWrapper>
-                <input type={"checkbox"} id={"remember me"}/>
+                <input type={"checkbox"} id={"remember me"} value={"rememberMe"}/>
                 <label for={"remember me"}>Remember me</label>
             </InputWrapper>
             <Link to="/profile">
