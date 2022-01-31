@@ -4,24 +4,27 @@ let path = require('path')
 let fs = require('fs')
 let MongoClient = require('mongodb').MongoClient
 
-router.get('/signin', function(req, res, next) {
-    res.render('/signin', {title : 'Cool'})
-})
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, "index.html"));
+});
 
-module.exports = router
 
 app.get('/signin', function (req, res) {
-    let response = {}
-    MongoClient.connect('mongodb://localhost:27017', function(err, client) {
+    let userObj = req.body
+    MongoClient.connect('mongodb://admin:password@localhost:27017/', function(err, client) {
         if (err) throw err
 
-        const db = client.db('argentBankDB')
-        const query = { userId : 1 }
-        db.collection('users').findOne(query, function (err, result) {
+        let db = client.db('argentBankDB')
+        userObj['userid'] = 1
+
+        let myquery = { userid: 1 }
+        let newvalues = { $set: userObj }
+        db.collection('users').update(myquery, newvalues, {upsert: true}, function (err, res) {
             if (err) throw err
             client.close()
-            response.send(result)
-            console.log(result)
+            console.log('successfully added')
         })
     })
+    res.send(userObj)
 })
+
