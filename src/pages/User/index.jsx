@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Account from "../../components/Account";
 import {Layout} from "../../layouts/Layout";
 
-const UserWrapper = styled.main`
+const ProfileWrapper = styled.main`
   width: 100%;
   height: 400px;
   background-color: black;
@@ -10,7 +10,7 @@ const UserWrapper = styled.main`
   flex: 1;
 `
 
-const UserHeader = styled.div`
+const ProfileHeader = styled.div`
   color: #fff;
   margin-bottom: 2rem;
   h1{
@@ -31,22 +31,22 @@ const AccountWrapper = styled.div`
   flex-direction: column;
 `
 
-const User = () => {
+const Profile = () => {
     return(
-        <UserWrapper>
-            <UserHeader>
+        <ProfileWrapper>
+            <ProfileHeader>
                 <h1>
                     Welcome back
                     <br/>
                     Cristina
                 </h1>
                 <EditButton type={"button"}>Edit Name</EditButton>
-            </UserHeader>
+            </ProfileHeader>
             <AccountWrapper>
                 <Account/>
             </AccountWrapper>
-        </UserWrapper>
+        </ProfileWrapper>
     )
 }
 
-export default User;
+export default Profile;

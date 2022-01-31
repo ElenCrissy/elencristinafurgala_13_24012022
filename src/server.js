@@ -1,15 +1,37 @@
 let express = require('express')
-let router = express.Router()
 let path = require('path')
-let fs = require('fs')
 let MongoClient = require('mongodb').MongoClient
+let mongoUrlLocal = "mongodb://admin:password@localhost:27017";
+let app = express()
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
-
 app.get('/signin', function (req, res) {
+    let response = {};
+    // Connect to the db
+    MongoClient.connect(mongoUrlLocal, mongoClientOptions, function (err, client) {
+        if (err) throw err;
+
+        let db = client.db(databaseName);
+
+        let myquery = { userid: 1 };
+
+        db.collection("users").findOne(myquery, function (err, result) {
+            if (err) throw err;
+            response = result;
+            client.close();
+
+            // Send response
+            res.send(response ? response : {});
+        });
+    });
+});
+
+
+
+app.post('/signin', function (req, res) {
     let userObj = req.body
     MongoClient.connect('mongodb://admin:password@localhost:27017/', function(err, client) {
         if (err) throw err

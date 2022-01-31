@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import init from "../../services/login";
 
-const SignInFormWrapper = styled.form`
+const LoginFormWrapper = styled.form`
   width: 90%;
 `
 
@@ -21,7 +22,7 @@ const InputWrapper = styled.div`
   }
 `
 
-const SignInButton = styled.button`
+const LoginButton = styled.button`
   width: 100%;
   padding: 8px;
   font-size: 1.1rem;
@@ -33,9 +34,9 @@ const SignInButton = styled.button`
   text-decoration: underline;
   border: none;`
 
-const SignInForm = () => {
+const LoginForm = () => {
     return(
-        <SignInFormWrapper>
+        <LoginFormWrapper>
             <InputWrapper>
                 <label for={"username"}>Username</label>
                 <input type={"text"} id={"username"}/>
@@ -48,11 +49,11 @@ const SignInForm = () => {
                 <input type={"checkbox"} id={"remember me"}/>
                 <label for={"remember me"}>Remember me</label>
             </InputWrapper>
-            <Link to="/user">
-                <SignInButton type={"button"}>Sign In</SignInButton>
+            <Link to="/profile">
+                <LoginButton type={"button"} onclick={init()}>Sign In</LoginButton>
             </Link>
-        </SignInFormWrapper>
+        </LoginFormWrapper>
     )
 }
 
-export default SignInForm;
+export default LoginForm;

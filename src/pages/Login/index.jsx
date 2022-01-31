@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
-import SignInForm from "../../components/SignInForm";
+import LoginForm from "../../components/LoginForm";
 
-const SignInWrapper = styled.main`
+const LoginWrapper = styled.main`
   width: 100%;
   background-color: black;
   flex: 1;
@@ -12,7 +12,7 @@ const SignInWrapper = styled.main`
   align-items: center;
 `
 
-const SignInContent = styled.section`
+const LoginContent = styled.section`
   box-sizing: border-box;
   background-color: white;
   width: 300px;
@@ -20,16 +20,16 @@ const SignInContent = styled.section`
   padding: 2rem;
 `
 
-const SignIn = () => {
+const Login = () => {
     return(
-        <SignInWrapper>
-            <SignInContent>
+        <LoginWrapper>
+            <LoginContent>
                 <FontAwesomeIcon icon={faUserCircle}/>
                 <h1>Sign in</h1>
-                <SignInForm/>
-            </SignInContent>
-        </SignInWrapper>
+                <LoginForm/>
+            </LoginContent>
+        </LoginWrapper>
     )
 }
 
-export default SignIn;
+export default Login;

@@ -23,7 +23,7 @@ const SignInHeaderButtonWrapper = styled.div`
 const SignInHeaderButton = () => {
     return(
         <SignInHeaderButtonWrapper>
-            <a href="/signin">
+            <a href="/login">
                 <FontAwesomeIcon icon={faUserCircle}/>
                 Sign in
             </a>

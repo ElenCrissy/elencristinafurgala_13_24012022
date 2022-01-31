@@ -1,7 +1,9 @@
-const fetchDataLogin = async () => {
-    const url = `http://localhost:3001/api-docs/#/User%20Module/post_user_login`
-    const resp = await fetch(url)
-    const data = await resp.json()
-    const perfTest = data.data.sessions
-    setActivity(perfTest)
+const init = async () => {
+    const url = `http://localhost:3001/api/v1/user`
+    const response = await fetch(url)
+    console.log("response", response)
+    const data = await response.json()
+    console.log(JSON.stringify(data))
 }
+
+export default init
