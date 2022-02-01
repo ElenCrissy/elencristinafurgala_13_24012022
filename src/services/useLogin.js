@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 
-const useFetch = (email, password) => {
+const useLogin = (email, password) => {
     const [userEmail, setUserEmail] = useState(email)
     const [userPassword, setUserPassword] = useState(password)
     const [error, setError] = useState(false)
@@ -31,7 +31,7 @@ const useFetch = (email, password) => {
     return {userEmail, userPassword, error}
 }
 
-export default useFetch
+export default useLogin
 
 
 

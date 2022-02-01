@@ -45,7 +45,7 @@ const LoginForm = () => {
             email : email,
             password : password
         }
-        dispatch()
+        dispatch(authenticateUser(userInput))
     }
 
     return(

@@ -2,21 +2,26 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
 const initialState = {
-    user : {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        isConnected : false
-    }
+    // user : {
+    //     firstName: '',
+    //     lastName: '',
+    //     email: '',
+    //     password: '',
+    // }
+    // auth : {
+    //     jwt :
+    //     status :
+    // }
 }
 
-export const setEmail = { type : "setEmail" }
-export const setPassword = { type : "setPassword" }
-export const login = (dispatch) => {
 
+export const authenticateUser = userInput => dispatch => {
+    // dispatch in progress
+    // appel
+    // dispatch success et stock JWT ou error
 }
 
+// export const getUser
 
 const reducer = (state = initialState, action) => {
     if(action.type === "setEmail"){
