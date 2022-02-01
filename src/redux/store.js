@@ -21,7 +21,6 @@ export const logout = { type : "logout" }
 
 
 const reducer = (state = initialState, action) => {
-    const currentScore = state.score
     if(action.type === "login"){
         return {...state, score : currentScore+1}
     }
