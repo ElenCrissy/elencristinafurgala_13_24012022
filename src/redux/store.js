@@ -1,33 +1,28 @@
-import {createStore} from "redux";
+import { createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 
 const initialState = {
-    users : [{
-        firstName: 'Tony',
-        lastName: 'Stark',
-        email: 'tony@stark.com',
-        password: 'password123',
+    user : {
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
         isConnected : false
-    }, {
-        firstName: 'Steve',
-        lastName: 'Rogers',
-        email: 'steve@rogers.com',
-        password: 'password456',
-        isConnected : false
-    }]
+    }
 }
 
-export const login = { type : "login" }
-export const logout = { type : "logout" }
+export const setEmail = { type : "setEmail" }
+export const setPassword = { type : "setPassword" }
+export const login = (dispatch) => {
+
+}
 
 
 const reducer = (state = initialState, action) => {
-    if(action.type === "login"){
-        return {...state, score : currentScore+1}
-    }
-    if(action.type === "logout"){
-        return {...state, score : currentScore-1}
+    if(action.type === "setEmail"){
+        return {...state, }
     }
     return state
 }
 
-export const store = createStore(reducer, initialState)
+export const store = createStore(reducer, initialState, applyMiddleware(thunk))

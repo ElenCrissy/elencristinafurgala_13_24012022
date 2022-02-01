@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-import init from "../../services/login";
 import {useDispatch} from "react-redux";
+import useFetch from "../../services/useFetch";
 
 const LoginFormWrapper = styled.form`
   width: 90%;
@@ -35,41 +34,42 @@ const LoginButton = styled.button`
   text-decoration: underline;
   border: none;`
 
-const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputText((lastValue)=>{
-        return{
-            ...lastValue,
-            [name]:value
-        }
-    });
-}
-
-const submitForm = (e) => {
-    e.preventDefault();
-    console.log(e.target.value);
-}
+// const submitForm = (e) => {
+//     e.preventDefault();
+//     const inputEmailValue = document.getElementById("username")
+//     const inputPasswordValue = document.getElementById("password")
+//     useUsers(inputEmailValue, inputPasswordValue);
+// }
 
 const LoginForm = () => {
-    const dispatch = useDispatch()
+    const inputEmailValue = document.getElementById("username")
+    const inputPasswordValue = document.getElementById("password")
+    // const dispatch = useDispatch()
+
+    // const submitForm = (e) => {
+    //     e.preventDefault()
+    //     const userInput = {
+    //         email : inputEmailValue,
+    //         password : inputPasswordValue
+    //     }
+    //     dispatch(login)
+    // }
+
     return(
-        <LoginFormWrapper method="post" onSubmit={dispatch(login)} novalidate>
+        <LoginFormWrapper method="post" onSubmit={useFetch(inputEmailValue, inputPasswordValue)} novalidate>
             <InputWrapper>
                 <label for={"username"}>Username</label>
-                <input type={"text"} id={"username"} value={"username"} onChange={handleChange}/>
+                <input type={"text"} id={"username"} required/>
             </InputWrapper>
             <InputWrapper>
                 <label for={"password"} >Password</label>
-                <input type={"password"} id={"password"} value={"password"} onChange={handleChange}/>
+                <input type={"password"} id={"password"} required/>
             </InputWrapper>
             <InputWrapper>
                 <input type={"checkbox"} id={"remember me"} value={"rememberMe"}/>
                 <label for={"remember me"}>Remember me</label>
             </InputWrapper>
-            <Link to="/profile">
-                <LoginButton type={"submit"}>Sign In</LoginButton>
-            </Link>
+            <LoginButton type={"submit"}>Sign In</LoginButton>
         </LoginFormWrapper>
     )
 }
