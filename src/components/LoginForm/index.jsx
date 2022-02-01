@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {useState} from "react";
+import {useDispatch} from "react-redux";
 
 const LoginFormWrapper = styled.form`
   width: 90%;
@@ -32,13 +33,6 @@ const LoginButton = styled.button`
   cursor: pointer;
   text-decoration: underline;
   border: none;`
-
-// const submitForm = (e) => {
-//     e.preventDefault();
-//     const inputEmailValue = document.getElementById("username")
-//     const inputPasswordValue = document.getElementById("password")
-//     useUsers(inputEmailValue, inputPasswordValue);
-// }
 
 const LoginForm = () => {
     const [email, setEmail] = useState('')
