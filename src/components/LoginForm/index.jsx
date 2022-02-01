@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import {useDispatch} from "react-redux";
-import useFetch from "../../services/useFetch";
+import {useState} from "react";
 
 const LoginFormWrapper = styled.form`
   width: 90%;
@@ -42,28 +41,36 @@ const LoginButton = styled.button`
 // }
 
 const LoginForm = () => {
-    const inputEmailValue = document.getElementById("username")
-    const inputPasswordValue = document.getElementById("password")
-    // const dispatch = useDispatch()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+    const dispatch = useDispatch()
 
-    // const submitForm = (e) => {
-    //     e.preventDefault()
-    //     const userInput = {
-    //         email : inputEmailValue,
-    //         password : inputPasswordValue
-    //     }
-    //     dispatch(login)
-    // }
+    const submitForm = (e) => {
+        e.preventDefault()
+        const userInput = {
+            email : email,
+            password : password
+        }
+        dispatch()
+    }
 
     return(
-        <LoginFormWrapper method="post" onSubmit={useFetch(inputEmailValue, inputPasswordValue)} novalidate>
+        <LoginFormWrapper method="post" onSubmit={submitForm} novalidate>
             <InputWrapper>
                 <label for={"username"}>Username</label>
-                <input type={"text"} id={"username"} required/>
+                <input type={"text"}
+                       id={"username"}
+                       onChange={(e) => setEmail(e.target.value)}
+                       required
+                />
             </InputWrapper>
             <InputWrapper>
                 <label for={"password"} >Password</label>
-                <input type={"password"} id={"password"} required/>
+                <input type={"password"}
+                       id={"password"}
+                       onChange={(e) => setPassword(e.target.value)}
+                       required
+                />
             </InputWrapper>
             <InputWrapper>
                 <input type={"checkbox"} id={"remember me"} value={"rememberMe"}/>
