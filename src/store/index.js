@@ -35,7 +35,12 @@ export const authenticateUser = userInput => dispatch => {
     }
     fetch(url, init)
         .then(response => {
-            console.log(response.json())
+            return response.json()
+        })
+        .then(data => {
+            const token = data.body.token
+            console.log(token)
+            return token
         })
         .catch(error =>{
             console.log(error)
