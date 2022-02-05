@@ -52,7 +52,7 @@ const LoginForm = () => {
     return(
         <LoginFormWrapper method="post" onSubmit={submitForm} novalidate>
             <InputWrapper>
-                <label for={"username"}>Username</label>
+                <label htmlFor={"username"}>Username</label>
                 <input type={"text"}
                        id={"username"}
                        onChange={(e) => setEmail(e.target.value)}
@@ -60,7 +60,7 @@ const LoginForm = () => {
                 />
             </InputWrapper>
             <InputWrapper>
-                <label for={"password"} >Password</label>
+                <label htmlFor={"password"} >Password</label>
                 <input type={"password"}
                        id={"password"}
                        onChange={(e) => setPassword(e.target.value)}
@@ -69,7 +69,7 @@ const LoginForm = () => {
             </InputWrapper>
             <InputWrapper>
                 <input type={"checkbox"} id={"remember me"} value={"rememberMe"}/>
-                <label for={"remember me"}>Remember me</label>
+                <label htmlFor={"remember me"}>Remember me</label>
             </InputWrapper>
             <LoginButton type={"submit"}>Sign In</LoginButton>
         </LoginFormWrapper>

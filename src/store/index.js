@@ -14,9 +14,9 @@ const initialState = {
     }
 }
 
-export const inProgress = "in progress"
-export const fulfilled = "fulfilled"
-export const rejected = "rejected"
+export const inProgress = { type : "in progress" }
+export const fulfilled = { type : "fulfilled" }
+export const rejected = { type : "rejected" }
 
 export const authenticateUser = userInput => dispatch => {
     // dispatch in progress
