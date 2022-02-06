@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 
+
 const initialState = {
     // user : {
     //     firstName: '',
@@ -15,7 +16,7 @@ const initialState = {
 }
 
 export const inProgress = { type : "in progress" }
-export const fulfilled = { type : "fulfilled" }
+export const success = { type : "success" }
 export const rejected = { type : "rejected" }
 
 export const authenticateUser = userInput => dispatch => {
@@ -41,10 +42,12 @@ export const authenticateUser = userInput => dispatch => {
         .then(data => {
             const token = data.body.token
             console.log(token)
+            dispatch(success)
             return token
         })
         .catch(error =>{
             console.log(error)
+            dispatch(rejected)
         })
     // dispatch success et stock JWT ou error
 }
@@ -57,9 +60,9 @@ const reducer = (state = initialState, action) => {
             status : inProgress.type
         }
     }
-    if(action.type === fulfilled.type){
+    if(action.type === success.type){
         return {...state,
-            status : fulfilled.type
+            status : success.type
             // auth.jwt : ??
         }
     }
