@@ -20,6 +20,7 @@ export const rejected = { type : "rejected" }
 
 export const authenticateUser = userInput => dispatch => {
     // dispatch in progress
+    dispatch(inProgress)
     // appel
     const url = 'http://localhost:3001/api/v1/user/login'
     const init = {
@@ -51,9 +52,20 @@ export const authenticateUser = userInput => dispatch => {
 // export const getUser
 
 const reducer = (state = initialState, action) => {
-    if(action.type === "authenticateUser"){
+    if(action.type === inProgress.type){
         return {...state,
+            status : inProgress.type
+        }
+    }
+    if(action.type === fulfilled.type){
+        return {...state,
+            status : fulfilled.type
             // auth.jwt : ??
+        }
+    }
+    if(action.type === rejected.type){
+        return {...state,
+            status : rejected.type
         }
     }
     return state
