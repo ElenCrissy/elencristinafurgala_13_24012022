@@ -1,7 +1,7 @@
 import {initialState} from "./index";
 
 export const reducer = (state = initialState, action) => {
-    if(action.type === "in progress"){
+    if(action.type === "in progress") {
         return {...state,
             auth : {
                 ...state.auth,
@@ -9,7 +9,7 @@ export const reducer = (state = initialState, action) => {
             }
         }
     }
-    if(action.type === "success"){
+    if(action.type === "success") {
         return {...state,
             auth : {
                 ...state.auth,
@@ -18,11 +18,18 @@ export const reducer = (state = initialState, action) => {
             }
         }
     }
-    if(action.type === "rejected"){
+    if(action.type === "rejected") {
         return {...state,
             auth : {
                 ...state.auth,
                 status : action.type
+            }
+        }
+    }
+    if (action.type === "add user") {
+        return {...state,
+            user : {
+                ...action.payload
             }
         }
     }

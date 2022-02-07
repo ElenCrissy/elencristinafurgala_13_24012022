@@ -15,6 +15,4 @@ export const initialState = {
     }
 }
 
-// export const getUser
-
 export const store = createStore(reducer, initialState, applyMiddleware(thunk))
