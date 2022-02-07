@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
-import {authenticateUser} from "../../store";
+import {authenticateUser} from "../../store/actions";
 
 const LoginFormWrapper = styled.form`
   width: 90%;
