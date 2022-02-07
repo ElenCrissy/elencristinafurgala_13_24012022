@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-
+import { IN_PROGRESS, SUCCESS, REJECTED } from "./actions"
 
 const initialState = {
     // user : {
@@ -15,14 +15,9 @@ const initialState = {
     }
 }
 
-export const inProgress = { type : "in progress" }
-export const success = { type : "success" }
-export const rejected = { type : "rejected" }
-
 export const authenticateUser = userInput => dispatch => {
-    // dispatch in progress
-    dispatch(inProgress)
-    // appel
+    dispatch(IN_PROGRESS)
+
     const url = 'http://localhost:3001/api/v1/user/login'
     const init = {
         method: 'POST',
@@ -42,33 +37,42 @@ export const authenticateUser = userInput => dispatch => {
         .then(data => {
             const token = data.body.token
             console.log(token)
-            dispatch(success)
+            dispatch(SUCCESS(token))
             return token
         })
         .catch(error =>{
             console.log(error)
-            dispatch(rejected)
+            dispatch(REJECTED)
+            console.log(store.getState())
         })
-    // dispatch success et stock JWT ou error
 }
 
 // export const getUser
 
 const reducer = (state = initialState, action) => {
-    if(action.type === inProgress.type){
+    if(action.type === "in progress"){
         return {...state,
-            status : inProgress.type
+            auth : {
+                ...state.auth,
+                status : IN_PROGRESS.type
+            }
         }
     }
-    if(action.type === success.type){
+    if(action.type === "success"){
         return {...state,
-            status : success.type
-            // auth.jwt : ??
+            // auth : {
+            //     ...state.auth,
+            //     status : "hel",
+            //     jwt : "hello"
+            // }
         }
     }
-    if(action.type === rejected.type){
+    if(action.type === "rejected"){
         return {...state,
-            status : rejected.type
+            auth : {
+                ...state.auth,
+                status : REJECTED.type
+            }
         }
     }
     return state
