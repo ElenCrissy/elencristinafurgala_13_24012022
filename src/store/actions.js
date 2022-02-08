@@ -39,28 +39,20 @@ export const authenticateUser = userInput => dispatch => {
 }
 
 export const getUser = token => dispatch => {
-    const url = 'http://localhost:3001/api/v1/user/login'
+    const url = 'http://localhost:3001/api/v1/user/profile'
     const init = {
-        method: 'POST',
+        method: "POST",
         headers: {
-            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
         },
+        body: JSON.stringify({
+            "token": token,
+        })
     }
     fetch(url, init)
-        .then(response => {
-            return response.json()
-        })
-        .then(data => {
-            console.log(data)
-            const user = data.body
-            console.log(data)
-            dispatch(addUser(user))
-            console.log(store.getState())
-        })
-        .catch(error =>{
-            console.log(error)
-        })
+        .then(res => res.json())
+        .then(json => console.log(json));
 }
 
 export const addUser = user => ({
