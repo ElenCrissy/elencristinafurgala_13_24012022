@@ -11,10 +11,10 @@ export const reducer = (state = initialState, action) => {
     }
     if(action.type === "success") {
         return {...state,
-            auth : {
+            auth: {
                 ...state.auth,
-                status : action.type,
-                jwt : action.payload
+                status: action.type,
+                jwt: action.payload
             }
         }
     }
@@ -26,10 +26,16 @@ export const reducer = (state = initialState, action) => {
             }
         }
     }
-    if (action.type === "add user") {
+    if (action.type === "login") {
+        console.log(action.payload)
         return {...state,
-            user : {
-                ...action.payload
+            user: {
+                ...state.user,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
+                email: action.payload.email,
+                id: action.payload.id,
+                isConnected: true
             }
         }
     }

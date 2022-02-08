@@ -3,12 +3,13 @@ import thunk from 'redux-thunk'
 import {reducer} from "./reducers";
 
 export const initialState = {
-    // user : {
-    //     firstName: '',
-    //     lastName: '',
-    //     email: '',
-    //     password: '',
-    // }
+    user : {
+        firstName: '',
+        lastName: '',
+        email: '',
+        id: '',
+        isConnected: false
+    },
     auth : {
         jwt : "",
         status : ""

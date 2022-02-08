@@ -24,9 +24,7 @@ export const authenticateUser = userInput => dispatch => {
         })
     }
     fetch(url, init)
-        .then(response => {
-            return response.json()
-        })
+        .then(response => response.json())
         .then(data => {
             const token = data.body.token
             dispatch(SUCCESS(token))
@@ -51,13 +49,14 @@ export const getUser = token => dispatch => {
         })
     }
     fetch(url, init)
-        .then(res => res.json())
-        .then(json => console.log(json));
+        .then(response => response.json())
+        .then(data => {
+            dispatch(login(data.body))
+            console.log(store.getState())
+        });
 }
 
-export const addUser = user => ({
-    type : "add user",
-    payload: {
-        ...user
-    }
+export const login = (userData) => ({
+    type : "login",
+    payload : userData
 })
