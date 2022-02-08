@@ -43,20 +43,18 @@ export const getUser = token => dispatch => {
     const init = {
         method: 'POST',
         headers: {
-            'Accept': 'application/json',
+            Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-            token: token,
-        })
     }
     fetch(url, init)
         .then(response => {
             return response.json()
         })
         .then(data => {
+            console.log(data)
             const user = data.body
-            console.log(user)
+            console.log(data)
             dispatch(addUser(user))
             console.log(store.getState())
         })
