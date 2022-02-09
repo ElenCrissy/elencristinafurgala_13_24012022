@@ -27,7 +27,6 @@ export const reducer = (state = initialState, action) => {
         }
     }
     if (action.type === "login") {
-        console.log(action.payload)
         return {...state,
             user: {
                 ...state.user,
@@ -38,6 +37,9 @@ export const reducer = (state = initialState, action) => {
                 isConnected: true
             }
         }
+    }
+    if(action.type === "logout"){
+        return initialState
     }
     return state
 }

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {useState} from "react";
 import {useDispatch} from "react-redux";
 import {authenticateUser} from "../../store/actions";
+import {store} from "../../store";
 
 const LoginFormWrapper = styled.form`
   width: 90%;
@@ -47,6 +48,12 @@ const LoginForm = () => {
             password : password
         }
         dispatch(authenticateUser(userInput))
+        const id = store.subscribe(() => {
+            return store.getState().user.id
+        })
+        if (id) {
+            window.location = `${window.location.origin}/profile/${id}`
+        }
     }
 
     return(

@@ -51,12 +51,15 @@ export const getUser = token => dispatch => {
     fetch(url, init)
         .then(response => response.json())
         .then(data => {
-            dispatch(login(data.body))
-            console.log(store.getState())
+            dispatch(LOGIN(data.body))
         });
 }
 
-export const login = (userData) => ({
+export const LOGIN = userData => ({
     type : "login",
     payload : userData
 })
+
+export const LOGOUT = {
+    type : "logout"
+}
