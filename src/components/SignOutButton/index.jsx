@@ -21,6 +21,7 @@ const SignOutButtonWrapper = styled.div`
 `
 
 const SignOutButton = () => {
+    //on click, dispatch log out action
     return(
         <SignOutButtonWrapper>
             <a href="/">

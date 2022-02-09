@@ -2,12 +2,14 @@ import {store} from "./index";
 
 export const IN_PROGRESS = { type : "in progress" }
 
+// action creator (minuscule)
 export const SUCCESS = token => ({
     type : "success",
     payload : token
 })
 export const REJECTED = { type : "rejected" }
 
+// thunk
 export const authenticateUser = userInput => dispatch => {
     dispatch(IN_PROGRESS)
 

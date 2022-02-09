@@ -34,7 +34,7 @@ export const reducer = (state = initialState, action) => {
                 lastName: action.payload.lastName,
                 email: action.payload.email,
                 id: action.payload.id,
-                isConnected: true
+                isAuthenticated: true
             }
         }
     }

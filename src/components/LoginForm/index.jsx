@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {authenticateUser} from "../../store/actions";
 import {store} from "../../store";
-import {Redirect} from "react-router-dom";
+import {useHistory} from "react-router";
 
 const LoginFormWrapper = styled.form`
   width: 90%;
@@ -38,9 +38,17 @@ const LoginButton = styled.button`
   border: none;`
 
 const LoginForm = () => {
+    const dispatch = useDispatch()
+    const history = useHistory()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const dispatch = useDispatch()
+    // const isAuthenticated = useSelector(state => state.user.isConnected)
+    const { isAuthenticated, id } = useSelector(state => state.user)
+    useEffect(() => {
+        if(isAuthenticated){
+            history.push(`/profile/${id}`)
+        }
+    }, [isAuthenticated])
 
     const submitForm = (e) => {
         e.preventDefault()
@@ -49,13 +57,14 @@ const LoginForm = () => {
             password : password
         }
         dispatch(authenticateUser(userInput))
-        const id = store.getState().user.id
-        store.subscribe(() => id)
-        if (id) {
-            return <Redirect to={`/profile/${id}`} push />
-            // this.props.history.push(`/profile/${id}`)
-            // window.location = `${window.location.origin}/profile/${id}`
-        }
+        // const id = store.getState().user.id
+        // store.subscribe(() => id)
+        //
+        // if (id) {
+        //     return <Redirect to={`/profile/${id}`} push />
+        //     // this.props.history.push(`/profile/${id}`)
+        //     // window.location = `${window.location.origin}/profile/${id}`
+        // }
     }
 
     return(

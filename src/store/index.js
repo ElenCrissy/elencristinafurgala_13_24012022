@@ -8,7 +8,7 @@ export const initialState = {
         lastName: '',
         email: '',
         id: '',
-        isConnected: false
+        isAuthenticated: false
     },
     auth : {
         jwt : "",

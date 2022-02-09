@@ -23,17 +23,15 @@ const Logo = styled.a`
 `
 
 const Header = () => {
-    const isConnected = store.getState().user.isConnected
-    store.subscribe(() => isConnected)
-    const isCo = useSelector(state => state)
-    console.log(isCo)
+    const isAuthenticated = useSelector(state => state.user.isAuthenticated)
+    console.log(isAuthenticated)
 
     return(
         <HeaderWrapper>
             <Logo href="/">
                 <img alt={"Argent Bank Logo"} src={argentBankLogo}/>
             </Logo>
-            {isConnected ? <SignOutButton/> : <SignInHeaderButton/>}
+            {isAuthenticated ? <SignOutButton/> : <SignInHeaderButton/>}
         </HeaderWrapper>
     )
 }
