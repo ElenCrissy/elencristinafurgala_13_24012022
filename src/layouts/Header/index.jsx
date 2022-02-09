@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import argentBankLogo from '../../assets/argentBankLogo.png'
 import SignInHeaderButton from "../../components/SignInHeaderButton";
+import SignOutButton from "../../components/SignOutButton";
+import {store} from "../../store";
+import {useSelector} from "react-redux";
 
 const HeaderWrapper = styled.nav`
   display: flex;
@@ -20,12 +23,17 @@ const Logo = styled.a`
 `
 
 const Header = () => {
+    const isConnected = store.getState().user.isConnected
+    store.subscribe(() => isConnected)
+    const isCo = useSelector(state => state)
+    console.log(isCo)
+
     return(
         <HeaderWrapper>
             <Logo href="/">
                 <img alt={"Argent Bank Logo"} src={argentBankLogo}/>
             </Logo>
-            <SignInHeaderButton/>
+            {isConnected ? <SignOutButton/> : <SignInHeaderButton/>}
         </HeaderWrapper>
     )
 }
