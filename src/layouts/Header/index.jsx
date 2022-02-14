@@ -4,6 +4,7 @@ import SignInHeaderButton from "../../components/SignInHeaderButton";
 import SignOutButton from "../../components/SignOutButton";
 import {store} from "../../store";
 import {useSelector} from "react-redux";
+import ProfileNameHeader from "../../components/ProfileNameHeader";
 
 const HeaderWrapper = styled.nav`
   display: flex;
@@ -22,16 +23,25 @@ const Logo = styled.a`
   }
 `
 
+const NavWrapper = styled.div`
+    display: flex
+`
+
 const Header = () => {
     const isAuthenticated = useSelector(state => state.user.isAuthenticated)
-    console.log(isAuthenticated)
-
+    const user = useSelector(state => state.user)
+    // const isAuthenticated = user.isAuthenticated
+    console.log(user)
     return(
         <HeaderWrapper>
             <Logo href="/">
                 <img alt={"Argent Bank Logo"} src={argentBankLogo}/>
             </Logo>
-            {isAuthenticated ? <SignOutButton/> : <SignInHeaderButton/>}
+            {isAuthenticated ? <SignOutButton/> :
+                <NavWrapper>
+                    <ProfileNameHeader/>
+                    <SignInHeaderButton/>
+                </NavWrapper>}
         </HeaderWrapper>
     )
 }

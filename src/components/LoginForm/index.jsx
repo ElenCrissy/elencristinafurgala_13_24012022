@@ -39,14 +39,16 @@ const LoginButton = styled.button`
 
 const LoginForm = () => {
     const dispatch = useDispatch()
-    const history = useHistory()
+    let history = useHistory()
+    console.log(history)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     // const isAuthenticated = useSelector(state => state.user.isConnected)
     const { isAuthenticated, id } = useSelector(state => state.user)
     useEffect(() => {
         if(isAuthenticated){
-            history.push(`/profile/${id}`)
+            history.push(`/profile/:${id}`)
+            // window.location = `${window.location.origin}/profile/${id}`
         }
     }, [isAuthenticated])
 

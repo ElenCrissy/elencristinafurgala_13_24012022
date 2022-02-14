@@ -3,13 +3,14 @@ import {store} from "./index";
 export const IN_PROGRESS = { type : "in progress" }
 
 // action creator (minuscule)
-export const SUCCESS = token => ({
+export const success = token => ({
     type : "success",
     payload : token
 })
+
 export const REJECTED = { type : "rejected" }
 
-// thunk
+// thunk (minuscule)
 export const authenticateUser = userInput => dispatch => {
     dispatch(IN_PROGRESS)
 
@@ -29,7 +30,7 @@ export const authenticateUser = userInput => dispatch => {
         .then(response => response.json())
         .then(data => {
             const token = data.body.token
-            dispatch(SUCCESS(token))
+            dispatch(success(token))
             dispatch(getUser(token))
         })
         .catch(error =>{
@@ -53,15 +54,15 @@ export const getUser = token => dispatch => {
     fetch(url, init)
         .then(response => response.json())
         .then(data => {
-            dispatch(LOGIN(data.body))
+            dispatch(login(data.body))
         });
 }
 
-export const LOGIN = userData => ({
+export const login = userData => ({
     type : "login",
     payload : userData
 })
 
-export const LOGOUT = {
+export const logout = {
     type : "logout"
 }
