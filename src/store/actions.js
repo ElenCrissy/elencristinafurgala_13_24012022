@@ -1,4 +1,5 @@
 import {store} from "./index";
+import {useSelector} from "react-redux";
 
 export const IN_PROGRESS = { type : "in progress" }
 
@@ -55,7 +56,10 @@ export const getUser = token => dispatch => {
         .then(response => response.json())
         .then(data => {
             dispatch(login(data.body))
-        });
+        })
+        .catch(error =>{
+                console.log(error)
+        })
 }
 
 export const login = userData => ({
@@ -66,3 +70,50 @@ export const login = userData => ({
 export const logout = {
     type : "logout"
 }
+
+export const sendNewUserName = userInput => dispatch => {
+    console.log(userInput)
+    dispatch(IN_PROGRESS)
+
+    const url = 'http://localhost:3001/api/v1'
+    const init = {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${userInput.token}`,
+        },
+        body: JSON.stringify({
+            firstName: userInput.firstName,
+            lastName: userInput.lastName,
+        })
+    }
+    fetch(url, init)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            //dispatch(getNewUserName(data))
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+}
+
+// export const getNewUserName = () => {
+//     const url = 'http://localhost:3001/api/v1/user/profile'
+//     fetch(url)
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log(data)
+//             //get name
+//             // dispatch(updateUserName(name))
+//         })
+//         .catch(error =>{
+//             console.log(error)
+//         })
+// }
+
+// export const updateUserName = userData => ({
+//     type : "update user name",
+//     payload : userData
+// })

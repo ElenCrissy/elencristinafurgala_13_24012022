@@ -38,8 +38,17 @@ export const reducer = (state = initialState, action) => {
             }
         }
     }
-    if(action.type === "logout"){
+    if(action.type === "logout") {
         return initialState
+    }
+    if(action.type === "update user name") {
+        return {...state,
+            user: {
+                ...state.user,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
+            }
+        }
     }
     return state
 }
