@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {authenticateUser} from "../../store/actions";
 import {store} from "../../store";
-import {useLocation} from "react-router";
+import {useHistory} from "react-router";
 
 const LoginFormWrapper = styled.form`
   width: 90%;
@@ -39,7 +39,7 @@ const LoginButton = styled.button`
 
 const LoginForm = () => {
     const dispatch = useDispatch()
-    let history = useLocation()
+    let history = useHistory()
     console.log(history)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
