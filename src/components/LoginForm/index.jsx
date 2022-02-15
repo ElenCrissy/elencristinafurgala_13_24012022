@@ -2,7 +2,6 @@ import styled from "styled-components";
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {authenticateUser} from "../../store/actions";
-import {store} from "../../store";
 import {useHistory} from "react-router";
 
 const LoginFormWrapper = styled.form`
@@ -40,7 +39,6 @@ const LoginButton = styled.button`
 const LoginForm = () => {
     const dispatch = useDispatch()
     let history = useHistory()
-    console.log(history)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     // const isAuthenticated = useSelector(state => state.user.isConnected)
@@ -48,7 +46,6 @@ const LoginForm = () => {
     useEffect(() => {
         if(isAuthenticated){
             history.push(`/profile/${id}`)
-            // window.location = `${window.location.origin}/profile/${id}`
         }
     }, [isAuthenticated])
 

@@ -1,24 +1,31 @@
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUserCircle} from "@fortawesome/free-solid-svg-icons";
-import {useSelector} from "react-redux";
+import PropTypes from "prop-types";
 
 const ProfileNameHeaderWrapper = styled.div`
-  
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 15px;
+  p{
+    margin: 0 0 0 10px;
+  }
 `
 
-const ProfileNameHeader = () => {
-    const userInfos = useSelector(state => state.user)
-    console.log(userInfos)
+const ProfileNameHeader = (props) => {
     // fix link
     return(
         <ProfileNameHeaderWrapper>
-            <a href="/">
-                <FontAwesomeIcon icon={faUserCircle}/>
-                {userInfos.firstName}
-            </a>
+            <FontAwesomeIcon icon={faUserCircle}/>
+            <p>{props.userFirstName}{props.userLastName}</p>
         </ProfileNameHeaderWrapper>
     )
+}
+
+ProfileNameHeader.propTypes = {
+    userFirstName : PropTypes.string.isRequired,
+    userLastName : PropTypes.string.isRequired
 }
 
 export default ProfileNameHeader

@@ -30,18 +30,18 @@ const NavWrapper = styled.div`
 const Header = () => {
     const isAuthenticated = useSelector(state => state.user.isAuthenticated)
     const user = useSelector(state => state.user)
-    // const isAuthenticated = user.isAuthenticated
-    console.log(user)
     return(
         <HeaderWrapper>
             <Logo href="/">
                 <img alt={"Argent Bank Logo"} src={argentBankLogo}/>
             </Logo>
-            {isAuthenticated ? <SignOutButton/> :
+            {isAuthenticated ?
                 <NavWrapper>
-                    <ProfileNameHeader/>
-                    <SignInHeaderButton/>
-                </NavWrapper>}
+                    <ProfileNameHeader userFirstName={user.firstName} userLastName={user.lastName}/>
+                    <SignOutButton/>
+                </NavWrapper>
+                : <SignInHeaderButton/>
+            }
         </HeaderWrapper>
     )
 }

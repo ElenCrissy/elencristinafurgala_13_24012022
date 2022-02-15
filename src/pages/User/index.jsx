@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Account from "../../components/Account";
-import {Layout} from "../../layouts/Layout";
+import {useSelector} from "react-redux";
+import {useState} from "react";
 
 const ProfileWrapper = styled.main`
   width: 100%;
@@ -10,11 +11,40 @@ const ProfileWrapper = styled.main`
   flex: 1;
 `
 
+//to fix
 const ProfileHeader = styled.div`
   color: #fff;
   margin-bottom: 2rem;
   h1{
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    //input{
+    //  width: 200px;
+    //  font-size: 30px;
+    //  font-weight: bold;
+    //  color: white;
+    //  background-color: black;
+    //  border: none;
+    //  #firstName{
+    //    text-align: right;
+    //  }
+    //  #lastName{
+    //    text-align: left;
+    //  }
+    //  ::placeholder{
+    //    color: white;
+    //  }
+    //  :focus{
+    //    outline: none;
+    //  }
+    //}
+  }
+`
+
+const ProfileName = styled.div`
+  font-size: 30px;
+  font-weight: bold;
+  button{
+    margin-top: 20px;
   }
 `
 
@@ -32,15 +62,29 @@ const AccountWrapper = styled.div`
 `
 
 const Profile = () => {
+    const user = useSelector(state => state.user)
+    const [isEditing, setEdit] = useState(false)
+
+    const handleChange = (e) => {
+        e.preventDefault()
+        setEdit(true)
+        if(isEditing){
+
+        }
+    }
+
     return(
         <ProfileWrapper>
             <ProfileHeader>
-                <h1>
-                    Welcome back
-                    <br/>
-                    Cristina
-                </h1>
-                <EditButton type={"button"}>Edit Name</EditButton>
+                <h1>Welcome back</h1>
+                <ProfileName>
+                    <div id={"user-name"}>{user.firstName} {user.lastName}</div>
+                    <EditButton type={"button"}
+                                onClick={handleChange}
+                                id={"edit-button"}>
+                        Edit Name
+                    </EditButton>
+                </ProfileName>
             </ProfileHeader>
             <AccountWrapper>
                 <Account/>
