@@ -11,7 +11,6 @@ const ProfileWrapper = styled.main`
   flex: 1;
 `
 
-//to fix
 const ProfileHeader = styled.div`
   color: #fff;
   margin-bottom: 2rem;
