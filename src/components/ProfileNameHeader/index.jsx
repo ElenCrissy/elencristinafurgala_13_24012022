@@ -18,7 +18,7 @@ const ProfileNameHeader = (props) => {
     return(
         <ProfileNameHeaderWrapper>
             <FontAwesomeIcon icon={faUserCircle}/>
-            <p>{props.userFirstName}{props.userLastName}</p>
+            <p>{props.userFirstName} {props.userLastName}</p>
         </ProfileNameHeaderWrapper>
     )
 }

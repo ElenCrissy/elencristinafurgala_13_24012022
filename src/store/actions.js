@@ -72,7 +72,6 @@ export const logout = {
 }
 
 export const sendNewUserName = userInput => dispatch => {
-    console.log(userInput)
     dispatch(IN_PROGRESS)
 
     const url = 'http://localhost:3001/api/v1/user/profile'
@@ -91,29 +90,19 @@ export const sendNewUserName = userInput => dispatch => {
     fetch(url, init)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
-            //dispatch(getNewUserName(data))
+            const newUserInfo = data.body
+            // dispatch(getNewUserName(newUserInfo))
+            dispatch(updateUserName(newUserInfo))
         })
         .catch(error =>{
             console.log(error)
         })
 }
 
-// export const getNewUserName = () => {
-//     const url = 'http://localhost:3001/api/v1/user/profile'
-//     fetch(url)
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log(data)
-//             //get name
-//             // dispatch(updateUserName(name))
-//         })
-//         .catch(error =>{
-//             console.log(error)
-//         })
-// }
-
-// export const updateUserName = userData => ({
-//     type : "update user name",
-//     payload : userData
-// })
+export const updateUserName = newUserData => ({
+    type : "update user name",
+    payload : {
+        firstName : newUserData.firstName,
+        lastName : newUserData.lastName
+    }
+})
