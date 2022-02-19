@@ -7,6 +7,9 @@ const NameWrapper = styled.div`
   font-size: 30px;
   font-weight: bold;
   color: white;
+  button{
+    margin-top: 20px;
+  }
 `
 const NameForm = styled.form`
   #firstName{
@@ -18,7 +21,7 @@ const NameForm = styled.form`
     font-weight: bold;
     color: white;
     background-color: black;
-    border: none;
+    outline: white;
     ::placeholder{
       color: white;
     }
@@ -40,7 +43,7 @@ const Button = styled.button`
   color: #fff;
   font-weight: bold;
   padding: 10px;
-  margin: 0 10px ;
+  margin: 0 10px;
 `
 
 const Name = (props) => {
@@ -68,6 +71,7 @@ const Name = (props) => {
             token : token
         }
         dispatch(sendNewUserName(userInput))
+        setEdit(false)
     }
 
     const handleCancel = () => {

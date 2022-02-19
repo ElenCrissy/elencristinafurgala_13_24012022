@@ -19,14 +19,6 @@ const ProfileHeader = styled.div`
   }
 `
 
-const ProfileName = styled.div`
-  font-size: 30px;
-  font-weight: bold;
-  button{
-    margin-top: 20px;
-  }
-`
-
 const AccountWrapper = styled.div`
   display: flex;
   flex-direction: column;

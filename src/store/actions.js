@@ -75,7 +75,7 @@ export const sendNewUserName = userInput => dispatch => {
     console.log(userInput)
     dispatch(IN_PROGRESS)
 
-    const url = 'http://localhost:3001/api/v1'
+    const url = 'http://localhost:3001/api/v1/user/profile'
     const init = {
         method: 'PUT',
         headers: {
