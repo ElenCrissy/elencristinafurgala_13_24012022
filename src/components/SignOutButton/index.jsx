@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
+import {useDispatch} from "react-redux";
+import {logout} from "../../store/actions";
 
 const SignOutButtonWrapper = styled.div`
   a{
@@ -21,10 +23,15 @@ const SignOutButtonWrapper = styled.div`
 `
 
 const SignOutButton = () => {
-    //on click, dispatch log out action
+    const dispatch = useDispatch()
+
+    const handleClick = () => {
+        dispatch(logout)
+    }
+
     return(
         <SignOutButtonWrapper>
-            <a href="/">
+            <a onClick={handleClick} href="/">
                 <FontAwesomeIcon icon={faArrowRight}/>
                 Sign out
             </a>
