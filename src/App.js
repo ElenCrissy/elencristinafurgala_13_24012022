@@ -7,6 +7,8 @@ import Footer from "./layouts/Footer";
 import React from "react";
 
 const App = () => {
+    const userId = localStorage.getItem('userToken')
+
     return(
         <div>
             <Header/>
@@ -14,7 +16,11 @@ const App = () => {
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route path="/login" component={Login} />
-                    <Route path="/profile/:id" component={Profile} />
+                    {
+                        userId ?
+                            <Route path={`/profile/${userId}`} component={Profile} /> :
+                            <Route path="/profile/:id" component={Profile} />
+                    }
                 </Switch>
             </Router>
             <Footer/>

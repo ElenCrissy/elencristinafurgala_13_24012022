@@ -30,7 +30,6 @@ export const authenticateUser = userInput => dispatch => {
     fetch(url, init)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             const token = data.body.token
             dispatch(success(token))
             dispatch(getUser(token))
@@ -56,7 +55,6 @@ export const getUser = token => dispatch => {
     fetch(url, init)
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             dispatch(login(data.body))
         })
         .catch(error =>{

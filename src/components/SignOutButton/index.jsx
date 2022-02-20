@@ -27,6 +27,7 @@ const SignOutButton = () => {
 
     const handleClick = () => {
         dispatch(logout)
+        localStorage.clear()
     }
 
     return(

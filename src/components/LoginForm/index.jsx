@@ -55,7 +55,12 @@ const LoginForm = () => {
             email : email,
             password : password
         }
+        const checkbox = document.getElementById("remember-me")
         dispatch(authenticateUser(userInput))
+        if(checkbox.checked) {
+            console.log(id)
+            localStorage.setItem('userId', JSON.stringify(id))
+        }
         // const id = store.getState().user.id
         // store.subscribe(() => id)
         //
@@ -85,7 +90,7 @@ const LoginForm = () => {
                 />
             </InputWrapper>
             <InputWrapper>
-                <input type={"checkbox"} id={"remember me"} value={"rememberMe"}/>
+                <input type={"checkbox"} id={"remember-me"} value={"rememberMe"}/>
                 <label htmlFor={"remember me"}>Remember me</label>
             </InputWrapper>
             <LoginButton type={"submit"}>Sign In</LoginButton>
