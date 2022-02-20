@@ -7,7 +7,7 @@ import Footer from "./layouts/Footer";
 import React from "react";
 
 const App = () => {
-    const userId = localStorage.getItem('userToken')
+    const userId = localStorage.getItem('userId')
 
     return(
         <div>

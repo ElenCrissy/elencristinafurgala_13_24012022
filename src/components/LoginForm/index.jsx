@@ -46,6 +46,10 @@ const LoginForm = () => {
     useEffect(() => {
         if(isAuthenticated){
             history.push(`/profile/${id}`)
+            const checkbox = document.getElementById("remember-me")
+            if(checkbox.checked) {
+                localStorage.setItem('userId', id)
+            }
         }
     }, [isAuthenticated])
 
@@ -55,12 +59,7 @@ const LoginForm = () => {
             email : email,
             password : password
         }
-        const checkbox = document.getElementById("remember-me")
         dispatch(authenticateUser(userInput))
-        if(checkbox.checked) {
-            console.log(id)
-            localStorage.setItem('userId', JSON.stringify(id))
-        }
         // const id = store.getState().user.id
         // store.subscribe(() => id)
         //
