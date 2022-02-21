@@ -24,15 +24,18 @@ const SignOutButtonWrapper = styled.div`
   }
 `
 
-const SignOutButton = () => {
+const SignOutButton = ({isAuthenticated}) => {
     const dispatch = useDispatch()
     let history = useHistory()
-    const { isAuthenticated } = useSelector(state => state.user)
+    // const isAuthenticated = useSelector(state => state)
+
+    console.log(isAuthenticated)
+
     useEffect(() => {
         if(!isAuthenticated) {
             history.goBack()
         }
-    }, )
+    }, [isAuthenticated])
 
     const handleClick = () => {
         dispatch(logout)
@@ -41,7 +44,7 @@ const SignOutButton = () => {
 
     return(
         <SignOutButtonWrapper>
-            <a onClick={handleClick}>
+            <a onClick={() => handleClick()}>
                 <FontAwesomeIcon icon={faArrowRight}/>
                 Sign out
             </a>

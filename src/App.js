@@ -2,7 +2,7 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Header from "./layouts/Header";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
-import Profile from "./pages/User";
+import Profile from "./pages/Profile";
 import Footer from "./layouts/Footer";
 import React, {useEffect} from "react";
 import {useDispatch} from "react-redux";

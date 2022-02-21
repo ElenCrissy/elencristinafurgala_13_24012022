@@ -1,6 +1,3 @@
-import {store} from "./index";
-import {useSelector} from "react-redux";
-
 export const IN_PROGRESS = { type : "in progress" }
 
 // action creator (minuscule)
@@ -67,9 +64,7 @@ export const login = userData => ({
     payload : userData
 })
 
-export const logout = {
-    type : "logout"
-}
+export const logout = { type : "logout" }
 
 export const sendNewUserName = userInput => dispatch => {
     dispatch(IN_PROGRESS)

@@ -37,7 +37,7 @@ const Header = () => {
             {isAuthenticated ?
                 <NavWrapper>
                     <ProfileNameHeader userFirstName={user.firstName}/>
-                    <SignOutButton/>
+                    <SignOutButton isAuthenticated={isAuthenticated}/>
                 </NavWrapper>
                 : <SignInHeaderButton/>
             }
