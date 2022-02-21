@@ -4,10 +4,24 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Profile from "./pages/User";
 import Footer from "./layouts/Footer";
-import React from "react";
+import React, {useEffect} from "react";
+import {useDispatch} from "react-redux";
+import {authenticateUser} from "./store/actions";
 
 const App = () => {
-    const userId = localStorage.getItem('userId')
+    const dispatch = useDispatch()
+    useEffect(() => {
+        const userEmail = localStorage.getItem("userEmail")
+        const userPassword = localStorage.getItem("userPassword")
+
+        if(userEmail && userPassword) {
+            const userInput = {
+                email : userEmail,
+                password : userPassword,
+            }
+            dispatch(authenticateUser(userInput))
+        }
+    }, [localStorage])
 
     return(
         <div>
@@ -16,11 +30,7 @@ const App = () => {
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route path="/login" component={Login} />
-                    {
-                        userId ?
-                            <Route path={`/profile/${userId}`} component={Profile} /> :
-                            <Route path="/profile/:id" component={Profile} />
-                    }
+                    <Route path="/profile/:id" component={Profile} />
                 </Switch>
             </Router>
             <Footer/>

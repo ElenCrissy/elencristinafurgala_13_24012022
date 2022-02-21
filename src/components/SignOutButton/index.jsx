@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../../store/actions";
+import {useHistory} from "react-router";
+import {useEffect} from "react";
 
 const SignOutButtonWrapper = styled.div`
   a{
@@ -24,6 +26,13 @@ const SignOutButtonWrapper = styled.div`
 
 const SignOutButton = () => {
     const dispatch = useDispatch()
+    let history = useHistory()
+    const { isAuthenticated } = useSelector(state => state.user)
+    useEffect(() => {
+        if(!isAuthenticated) {
+            history.goBack()
+        }
+    }, )
 
     const handleClick = () => {
         dispatch(logout)
@@ -32,7 +41,7 @@ const SignOutButton = () => {
 
     return(
         <SignOutButtonWrapper>
-            <a onClick={handleClick} href="/">
+            <a onClick={handleClick}>
                 <FontAwesomeIcon icon={faArrowRight}/>
                 Sign out
             </a>

@@ -32,7 +32,6 @@ const NameForm = styled.form`
 `
 
 const Buttons = styled.div`
-  margin-top: 20px;
   display: flex;
   justify-content: center;
 `
