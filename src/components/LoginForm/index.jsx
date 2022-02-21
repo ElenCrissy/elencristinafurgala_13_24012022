@@ -43,6 +43,8 @@ const LoginForm = () => {
     const [password, setPassword] = useState('')
     // const isAuthenticated = useSelector(state => state.user.isConnected)
     const { isAuthenticated, id } = useSelector(state => state.user)
+    const { jwt } = useSelector(state => state.auth)
+
     useEffect(() => {
         if(isAuthenticated){
             history.push(`/profile/${id}`)
@@ -58,11 +60,9 @@ const LoginForm = () => {
         dispatch(authenticateUser(userInput))
         const checkbox = document.getElementById("remember-me")
         if(checkbox.checked) {
-            localStorage.setItem('email', JSON.stringify(email))
-            localStorage.setItem('password', JSON.stringify(password))
-            localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated))
-            localStorage.setItem('id', JSON.stringify(id))
-            // localStorage.setItem("user", JSON.stringify(data))
+            localStorage.setItem('userInput', JSON.stringify(userInput))
+            // localStorage.setItem('password', JSON.stringify(password))
+            // localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated))
         }
         // const id = store.getState().user.id
         // store.subscribe(() => id)

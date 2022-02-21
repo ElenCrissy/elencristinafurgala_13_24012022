@@ -24,27 +24,26 @@ const SignOutButtonWrapper = styled.div`
   }
 `
 
-const SignOutButton = ({isAuthenticated}) => {
+const SignOutButton = () => {
     const dispatch = useDispatch()
     let history = useHistory()
-    // const isAuthenticated = useSelector(state => state)
+    const isAuthenticated = useSelector(state => state.user.isAuthenticated)
 
-    console.log(isAuthenticated)
-
-    useEffect(() => {
-        if(!isAuthenticated) {
-            history.goBack()
-        }
-    }, [isAuthenticated])
+    // useEffect(() => {
+    //     if(!isAuthenticated) {
+    //         history.goBack()
+    //     }
+    // }, [isAuthenticated])
 
     const handleClick = () => {
         dispatch(logout)
         localStorage.clear()
+        console.log(isAuthenticated)
     }
 
     return(
         <SignOutButtonWrapper>
-            <a onClick={() => handleClick()}>
+            <a onClick={handleClick}>
                 <FontAwesomeIcon icon={faArrowRight}/>
                 Sign out
             </a>
