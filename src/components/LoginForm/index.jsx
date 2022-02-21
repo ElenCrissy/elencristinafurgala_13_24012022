@@ -48,8 +48,10 @@ const LoginForm = () => {
             history.push(`/profile/${id}`)
             const checkbox = document.getElementById("remember-me")
             if(checkbox.checked) {
-                localStorage.setItem('email', email)
-                localStorage.setItem('password', password)
+                localStorage.setItem('email', JSON.stringify(email))
+                localStorage.setItem('password', JSON.stringify(password))
+                localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated))
+                localStorage.setItem('id', JSON.stringify(id))
             }
         }
     }, [isAuthenticated])

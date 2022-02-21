@@ -24,7 +24,6 @@ const ProfileNameHeader = (props) => {
 
 ProfileNameHeader.propTypes = {
     userFirstName : PropTypes.string.isRequired,
-    userLastName : PropTypes.string.isRequired
 }
 
 export default ProfileNameHeader

@@ -10,10 +10,19 @@ import {authenticateUser} from "./store/actions";
 
 const App = () => {
     const dispatch = useDispatch()
-    useEffect(() => {
-        const userEmail = localStorage.getItem("userEmail")
+    let userEmail
+    let userPassword
+    window.onload = () => {
+        const userEmail = JSON.parse(localStorage.getItem("userEmail"))
         const userPassword = localStorage.getItem("userPassword")
-
+        return userEmail
+    }
+    // const userEmail = JSON.parse(localStorage.getItem("userEmail"))
+    // const userPassword = localStorage.getItem("userPassword")
+    console.log(userEmail, userPassword)
+    const isAuthenticated = localStorage.getItem("isAuthenticated")
+    const userId = localStorage.getItem("id")
+    useEffect(() => {
         if(userEmail && userPassword) {
             const userInput = {
                 email : userEmail,

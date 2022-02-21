@@ -2,7 +2,6 @@ import styled from "styled-components";
 import argentBankLogo from '../../assets/argentBankLogo.png'
 import SignInHeaderButton from "../../components/SignInHeaderButton";
 import SignOutButton from "../../components/SignOutButton";
-import {store} from "../../store";
 import {useSelector} from "react-redux";
 import ProfileNameHeader from "../../components/ProfileNameHeader";
 
@@ -37,7 +36,7 @@ const Header = () => {
             </Logo>
             {isAuthenticated ?
                 <NavWrapper>
-                    <ProfileNameHeader userFirstName={user.firstName} userLastName={user.lastName}/>
+                    <ProfileNameHeader userFirstName={user.firstName}/>
                     <SignOutButton/>
                 </NavWrapper>
                 : <SignInHeaderButton/>
