@@ -70,6 +70,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type : string
       produces:
         - application/json
       responses:
@@ -93,6 +94,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type : string
         - in: body
           name: body
           description: Update user profile attributes
@@ -121,6 +123,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type : string
       produces:
         - application/json
       responses:
@@ -166,7 +169,8 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/accounts/{accountid}/{transactionId} :
+  # /user/accounts/{transactionId} :
+  /user/{transactionId} :
     post:
       security:
         - Bearer: []
@@ -175,11 +179,11 @@ paths:
       summary: Transaction API
       description: API for adding info to transaction
       parameters:
-        - in: path
-          name: "accountId"
-          description: The account id, as accountId
-          required: true
-          type : string
+        # - in: path
+        #   name: "accountId"
+        #   description: The account id, as accountId
+        #   required: true
+        #   type : string
         - in: path
           name: "transactionId"
           description: The transaction id, as transactionId
@@ -201,6 +205,86 @@ paths:
       responses:
         '200':
           description: Transaction info added successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    put:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Transaction API
+      description: API for changing info in transaction
+      parameters:
+        # - in: path
+        #   name: "accountId"
+        #   description: The account id, as accountId
+        #   required: true
+        #   type : string
+        - in: path
+          name: "transactionId"
+          description: The transaction id, as transactionId
+          required: true
+          type : string
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type : string
+        - in: body
+          name: body
+          description: Transaction info payload
+          required: true
+          schema:
+            $ref: '#/definitions/Transaction'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction info changed successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    delete:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Transaction API
+      description: API for deleting info in transaction
+      parameters:
+        # - in: path
+        #   name: "accountId"
+        #   description: The account id, as accountId
+        #   required: true
+        #   type : string
+        - in: path
+          name: "transactionId"
+          description: The transaction id, as transactionId
+          required: true
+          type : string
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type : string
+        # - in: body
+        #   name: body
+        #   description: Transaction info payload
+        #   required: true
+        #   schema:
+        #     $ref: '#/definitions/Transaction'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction info deleted successully
           schema:
             $ref: '#/definitions/ApiResponse'
         '400':
@@ -262,19 +346,19 @@ definitions:
       lastName:
         type: string
   Accounts:
-    # type: object
-    # properties:
-    #   accounts :
-    type : array
-    items :
-      type : object
-      properties :
-        accountId :
-          type : string
-        accountType :
-          type : string
-        balance :
-          type : string
+    type: object
+    properties:
+      accounts :
+        type : array
+        items :
+          type : object
+          properties :
+            accountId :
+              type : string
+            accountType :
+              type : string
+            balance :
+              type : string
   AccountId :
     properties :
       accountId :
