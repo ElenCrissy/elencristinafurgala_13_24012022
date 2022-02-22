@@ -110,26 +110,99 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/transactions:
+  /user/accounts:
     get:
       tags:
         - User Module
-      summary: Transactions API
-      description: API for fetching transactions
+      summary: Accounts
+      description: API for fetching accounts
       parameters:
-        - in: body
-          name: body
-          description: Login Payload
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
           required: true
-          schema:
-            $ref: '#/definitions/Login'
       produces:
         - application/json
       responses:
         '200':
-          description: Login Successfully
+          description: Accounts Fetched Successfully
           schema:
-            $ref: '#/definitions/LoginResponse'
+            $ref: '#/definitions/Accounts'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/accounts/{accountId}:
+    get:
+      tags:
+        - User Module
+      summary: Transactions
+      description: API for fetching transactions of an account
+      parameters:
+        - in: path
+          name: "accountId"
+          description: The account id, as accountId
+          required: true
+          type : string
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type : string
+        - in: body
+          name: Account Id
+          description: Id of account that needs to be fetched
+          required: true
+          schema:
+            $ref: '#/definitions/AccountId'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transactions Fetched Successfully
+          schema:
+            $ref: '#/definitions/Transactions'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+  /user/accounts/{accountid}/{transactionId} :
+    post:
+      security:
+        - Bearer: []
+      tags:
+        - User Module
+      summary: Transaction API
+      description: API for adding info to transaction
+      parameters:
+        - in: path
+          name: "accountId"
+          description: The account id, as accountId
+          required: true
+          type : string
+        - in: path
+          name: "transactionId"
+          description: The transaction id, as transactionId
+          required: true
+          type : string
+        - in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+          type : string
+        - in: body
+          name: body
+          description: Transaction info payload
+          required: true
+          schema:
+            $ref: '#/definitions/Transaction'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction info added successully
+          schema:
+            $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
         '500':
@@ -188,3 +261,61 @@ definitions:
         type: string
       lastName:
         type: string
+  Accounts:
+    # type: object
+    # properties:
+    #   accounts :
+    type : array
+    items :
+      type : object
+      properties :
+        accountId :
+          type : string
+        accountType :
+          type : string
+        balance :
+          type : string
+  AccountId :
+    properties :
+      accountId :
+        type : string
+  Transactions :
+    type : array
+    items :
+      type : object
+      properties :
+        transactionNumber :
+          type : string
+        date :
+          type : string
+        description :
+          type : string
+        amount :
+          type : string
+        balance :
+          type : string
+        transactionType :
+          type : string
+        category :
+          type : string
+        notes :
+          type : string
+  Transaction :
+    type : object
+    properties :
+      transactionNumber :
+        type : string
+      date :
+        type : string
+      description :
+        type : string
+      amount :
+        type : string
+      balance :
+        type : string
+      transactionType :
+        type : string
+      category :
+        type : string
+      notes :
+        type : string
