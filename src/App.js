@@ -4,27 +4,18 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Footer from "./layouts/Footer";
-import React, {useEffect} from "react";
+import React from "react";
 import {useDispatch} from "react-redux";
-import {authenticateUser} from "./store/actions";
+import {getUser} from "./store/actions";
 
 const App = () => {
     const dispatch = useDispatch()
     window.onload = () => {
-        const user = JSON.parse(localStorage.getItem("userInput"))
-        console.log(user)
-        return user
+        const jwt = localStorage.getItem("jwt")
+        if(jwt) {
+            dispatch(getUser(jwt))
+        }
     }
-    // const user = localStorage.getItem("user")
-    // useEffect(() => {
-    //     if(user) {
-    //         const userInput = {
-    //             email : userEmail,
-    //             password : userPassword,
-    //         }
-    //         dispatch(authenticateUser(userInput))
-    //     }
-    // }, [localStorage])
 
     return(
         <div>

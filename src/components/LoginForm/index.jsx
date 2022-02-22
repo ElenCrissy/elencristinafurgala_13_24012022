@@ -11,7 +11,8 @@ const LoginFormWrapper = styled.form`
 const InputWrapper = styled.div`
   label{
     font-weight: bold;
-    text-align: left;
+    display: flex;
+    justify-content: left;
   }
   input{
     width: 100%;
@@ -21,6 +22,12 @@ const InputWrapper = styled.div`
     margin-bottom: 1rem;
     padding: 5px;
     font-size: 1.2rem;
+  }
+  :last-of-type{
+    display: flex;
+    input{
+      width: auto;
+    }
   }
 `
 
@@ -48,6 +55,10 @@ const LoginForm = () => {
     useEffect(() => {
         if(isAuthenticated){
             history.push(`/profile/${id}`)
+            const checkbox = document.getElementById("remember-me")
+            if(checkbox.checked) {
+                localStorage.setItem('jwt', jwt)
+            }
         }
     }, [isAuthenticated])
 
@@ -58,12 +69,6 @@ const LoginForm = () => {
             password : password
         }
         dispatch(authenticateUser(userInput))
-        const checkbox = document.getElementById("remember-me")
-        if(checkbox.checked) {
-            localStorage.setItem('userInput', JSON.stringify(userInput))
-            // localStorage.setItem('password', JSON.stringify(password))
-            // localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated))
-        }
         // const id = store.getState().user.id
         // store.subscribe(() => id)
         //

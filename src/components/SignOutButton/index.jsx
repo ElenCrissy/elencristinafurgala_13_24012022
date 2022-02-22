@@ -27,13 +27,13 @@ const SignOutButtonWrapper = styled.div`
 const SignOutButton = () => {
     const dispatch = useDispatch()
     let history = useHistory()
-    const isAuthenticated = useSelector(state => state.user.isAuthenticated)
+    const isAuthenticated = useSelector(state => state.user)
 
-    // useEffect(() => {
-    //     if(!isAuthenticated) {
-    //         history.goBack()
-    //     }
-    // }, [isAuthenticated])
+    useEffect(() => {
+        if(isAuthenticated) {
+            console.log(history)
+        }
+    }, [isAuthenticated])
 
     const handleClick = () => {
         dispatch(logout)

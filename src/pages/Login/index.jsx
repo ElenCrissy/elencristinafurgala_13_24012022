@@ -25,7 +25,7 @@ const Login = () => {
         <LoginWrapper>
             <LoginContent>
                 <FontAwesomeIcon icon={faUserCircle}/>
-                <h1>Sign in</h1>
+                <h1>Sign In</h1>
                 <LoginForm/>
             </LoginContent>
         </LoginWrapper>

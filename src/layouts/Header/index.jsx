@@ -27,8 +27,9 @@ const NavWrapper = styled.div`
 `
 
 const Header = () => {
-    const isAuthenticated = useSelector(state => state.user.isAuthenticated)
+    const isAuthenticated = useSelector(state => state.user)
     const user = useSelector(state => state.user)
+
     return(
         <HeaderWrapper>
             <Logo href="/">
