@@ -19,8 +19,8 @@ const App = () => {
 
     return(
         <div>
-            <Header/>
             <Router>
+                <Header/>
                 <Switch>
                     <Route exact path="/" component={HomePage} />
                     <Route path="/login" component={Login} />

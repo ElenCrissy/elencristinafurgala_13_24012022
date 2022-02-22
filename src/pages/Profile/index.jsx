@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Account from "../../components/Account";
 import {useSelector} from "react-redux";
 import Name from "../../components/Name";
+import {useHistory} from "react-router";
+import {useEffect} from "react";
 
 const ProfileWrapper = styled.main`
   width: 100%;
@@ -25,7 +27,16 @@ const AccountWrapper = styled.div`
 `
 
 const Profile = () => {
+    const history = useHistory()
     const user = useSelector(state => state.user)
+    const isAuthenticated = user.isAuthenticated
+
+    useEffect(() => {
+        if(!isAuthenticated) {
+            history.push(`/`)
+        }
+    }, [isAuthenticated])
+
     return(
         <ProfileWrapper>
             <ProfileHeader>

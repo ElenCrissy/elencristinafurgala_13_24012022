@@ -27,7 +27,7 @@ const NavWrapper = styled.div`
 `
 
 const Header = () => {
-    const isAuthenticated = useSelector(state => state.user)
+    const {isAuthenticated} = useSelector(state => state.user)
     const user = useSelector(state => state.user)
 
     return(

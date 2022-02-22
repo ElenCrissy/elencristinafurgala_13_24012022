@@ -27,6 +27,7 @@ export const reducer = (state = initialState, action) => {
         }
     }
     if (action.type === "login") {
+        //action.rememberMe
         return {...state,
             user: {
                 ...state.user,
@@ -39,6 +40,8 @@ export const reducer = (state = initialState, action) => {
         }
     }
     if(action.type === "logout") {
+        localStorage.removeItem('jwt')
+        //unpack initialState changer jwt
         return initialState
     }
     if(action.type === "update user name") {

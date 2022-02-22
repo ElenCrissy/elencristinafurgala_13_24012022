@@ -135,7 +135,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/accounts/{accountId}:
+  /user/accounts/{accountId}/transactions:
     get:
       tags:
         - User Module
@@ -145,6 +145,11 @@ paths:
         - in: path
           name: "accountId"
           description: The account id, as accountId
+          required: true
+          type : string
+        - in: path
+          name: "transactions"
+          description: The account id, as transactions
           required: true
           type : string
         - in: header
@@ -169,8 +174,6 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  # /user/accounts/{transactionId} :
-  /user/{transactionId} :
     post:
       security:
         - Bearer: []
@@ -179,11 +182,11 @@ paths:
       summary: Transaction API
       description: API for adding info to transaction
       parameters:
-        # - in: path
-        #   name: "accountId"
-        #   description: The account id, as accountId
-        #   required: true
-        #   type : string
+        - in: path
+          name: "accountId"
+          description: The account id, as accountId
+          required: true
+          type : string
         - in: path
           name: "transactionId"
           description: The transaction id, as transactionId
@@ -211,6 +214,7 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
+  /user/accounts/{accountId}/transactions/{transactionId} :
     put:
       security:
         - Bearer: []
@@ -219,11 +223,11 @@ paths:
       summary: Transaction API
       description: API for changing info in transaction
       parameters:
-        # - in: path
-        #   name: "accountId"
-        #   description: The account id, as accountId
-        #   required: true
-        #   type : string
+        - in: path
+          name: "accountId"
+          description: The account id, as accountId
+          required: true
+          type : string
         - in: path
           name: "transactionId"
           description: The transaction id, as transactionId
