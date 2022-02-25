@@ -12,7 +12,7 @@ export const initialState = {
     },
     auth : {
         jwt : '',
-        // jwt: localStorage.getItem("jwt")
+        // jwt: localStorage.getItem("jwt"),
         status : ''
     }
 }
