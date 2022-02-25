@@ -4,18 +4,28 @@ import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Footer from "./layouts/Footer";
-import React from "react";
-import {useDispatch} from "react-redux";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import {getUser} from "./store/actions";
+import {useHistory} from "react-router";
 
 const App = () => {
-    const dispatch = useDispatch()
-    window.onload = () => {
-        const jwt = localStorage.getItem("jwt")
-        if(jwt) {
-            dispatch(getUser(jwt))
+    // const dispatch = useDispatch()
+    // window.onload = () => {
+    //     const jwt = localStorage.getItem("jwt")
+    //     if(jwt) {
+    //         dispatch(getUser(jwt))
+    //     }
+    // }
+
+    const jwt = useSelector(state => state.auth.jwt)
+    const history = useHistory()
+    useEffect(() => {
+        if(jwt){
+            history.push()
         }
-    }
+    }, [jwt])
+
 
     return(
         <div>

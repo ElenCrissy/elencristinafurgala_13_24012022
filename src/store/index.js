@@ -11,8 +11,8 @@ export const initialState = {
         isAuthenticated: false
     },
     auth : {
-        jwt : '',
-        // jwt: localStorage.getItem("jwt"),
+        // jwt : '',
+        jwt: localStorage.getItem("jwt"),
         status : ''
     }
 }
