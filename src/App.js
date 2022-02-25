@@ -6,8 +6,8 @@ import Profile from "./pages/Profile";
 import Footer from "./layouts/Footer";
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getUser} from "./store/actions";
 import {useHistory} from "react-router";
+import {login} from "./store/actions";
 
 const App = () => {
     // const dispatch = useDispatch()
@@ -18,11 +18,15 @@ const App = () => {
     //     }
     // }
 
+    const dispatch = useDispatch()
     const jwt = useSelector(state => state.auth.jwt)
+    console.log(jwt)
+    const userId = useSelector(state => state.user.id)
     const history = useHistory()
     useEffect(() => {
         if(jwt){
-            history.push()
+            console.log("two", jwt)
+            dispatch(login)
         }
     }, [jwt])
 
