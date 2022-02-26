@@ -69,14 +69,6 @@ const LoginForm = () => {
             password : password
         }
         dispatch(authenticateUser(userInput))
-        // const id = store.getState().user.id
-        // store.subscribe(() => id)
-        //
-        // if (id) {
-        //     return <Redirect to={`/profile/${id}`} push />
-        //     // this.props.history.push(`/profile/${id}`)
-        //     // window.location = `${window.location.origin}/profile/${id}`
-        // }
     }
 
     return(

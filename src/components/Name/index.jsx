@@ -2,6 +2,7 @@ import styled from "styled-components";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {sendNewUserName} from "../../store/actions";
+import PropTypes from "prop-types";
 
 const NameWrapper = styled.div`
   font-size: 30px;
@@ -112,6 +113,9 @@ const Name = (props) => {
     )
 }
 
-
+Name.protoTypes = {
+    firstName : PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired
+}
 
 export default Name
