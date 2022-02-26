@@ -8,6 +8,10 @@ const FeatureWrapper = styled.section`
   width: 100%;
   display: flex;
   flex-direction: row;
+  @media only screen and (max-width: 700px) {
+    display: flex;
+    flex-direction: column;
+  }
 `
 
 const FeatureItem = styled.div`

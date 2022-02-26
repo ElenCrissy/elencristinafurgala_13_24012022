@@ -10,6 +10,10 @@ const HeaderWrapper = styled.nav`
   justify-content: space-between;
   align-items: center;
   padding: 5px 20px;
+  @media only screen and (max-width: 350px) {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
 `
 
 const Logo = styled.a`
@@ -37,7 +41,7 @@ const Header = () => {
             </Logo>
             {isAuthenticated ?
                 <NavWrapper>
-                    <ProfileNameHeader userFirstName={user.firstName}/>
+                    <ProfileNameHeader userFirstName={user.firstName} userId={user.id}/>
                     <SignOutButton/>
                 </NavWrapper>
                 : <SignInHeaderButton/>

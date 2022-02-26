@@ -55,8 +55,6 @@ const Name = (props) => {
     const handleChange = () => {
         if(!isEditing) {
             setEdit(true)
-            const firstNameInput = document.getElementById("firstName")
-            // firstNameInput.focus()
         } else if(isEditing) {
             setEdit(false)
         }

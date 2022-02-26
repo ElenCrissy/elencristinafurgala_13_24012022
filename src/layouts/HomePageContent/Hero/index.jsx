@@ -31,20 +31,22 @@ const HeroContent = styled.section`
     display: inline-block;
     padding-top: 20px;
   }
+  @media only screen and (max-width: 500px) {
+    width: 70%;
+    margin: 5%;
+    right: 0;
+  }
 `
 
 const Hero = () => {
     return(
         <HeroWrapper>
-            <div>
-                <HeroContent>
-                    {/*<h2 className="sr-only">Promoted Content</h2>*/}
-                    <p>No fees.</p>
-                    <p>No minimum deposit.</p>
-                    <p>High interest rates.</p>
-                    <span>Open a savings account with Argent Bank today!</span>
-                </HeroContent>
-                </div>
+            <HeroContent>
+                <p>No fees.</p>
+                <p>No minimum deposit.</p>
+                <p>High interest rates.</p>
+                <span>Open a savings account with Argent Bank today!</span>
+            </HeroContent>
         </HeroWrapper>
     )
 }

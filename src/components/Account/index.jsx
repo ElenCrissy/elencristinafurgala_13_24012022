@@ -13,7 +13,10 @@ const AccountBlock = styled.section`
   box-sizing: border-box;
   text-align: left;
   margin-bottom: 2rem;
-  
+  @media only screen and (max-width: 500px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `
 
 const AccountDetails = styled.div`
