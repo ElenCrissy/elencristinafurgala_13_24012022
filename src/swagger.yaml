@@ -135,21 +135,16 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/accounts/{accountId}/{transactions}:
+  /user/accounts/{accountId}/transactions:
     get:
       tags:
         - User Module
       summary: Transactions
-      description: API for fetching transactions of an account
+      description: API for fetching current month's transactions of an account
       parameters:
         - in: path
           name: "accountId"
-          description: The account id, as accountId
-          required: true
-          type : string
-        - in: path
-          name: "transactions"
-          description: The transactions, as transactions
+          description: The account id, as a string
           required: true
           type : string
         - in: header
@@ -174,28 +169,23 @@ paths:
           description: Invalid Fields
         '500':
           description: Internal Server Error
-  /user/accounts/{accountId}/{transactions}/{transactionId} :
+  /user/accounts/{accountId}/transactions/{transactionId} :
     put:
       security:
         - Bearer: []
       tags:
         - User Module
       summary: Transaction API
-      description: API for adding info to transaction
+      description: API for editing transaction info
       parameters:
         - in: path
           name: "accountId"
-          description: The account id, as accountId
-          required: true
-          type : string
-        - in: path
-          name: "transactions"
-          description: The transactions, as transactions
+          description: The account id, as a string
           required: true
           type : string
         - in: path
           name: "transactionId"
-          description: The transaction id, as transactionId
+          description: The transaction id, as string
           required: true
           type : string
         - in: header
@@ -226,21 +216,16 @@ paths:
       tags:
         - User Module
       summary: Transaction API
-      description: API for deleting info in transaction
+      description: API for deleting a transaction
       parameters:
         - in: path
           name: "accountId"
-          description: The account id, as accountId
-          required: true
-          type : string
-        - in: path
-          name: "transactions"
-          description: The transactions, as transactions
+          description: The account id, as a string
           required: true
           type : string
         - in: path
           name: "transactionId"
-          description: The transaction id, as transactionId
+          description: The transaction id, as a string
           required: true
           type : string
         - in: header
@@ -248,19 +233,11 @@ paths:
           description: Attach Bearer JWT token
           required: true
           type : string
-        - in: body
-          name: body
-          description: Transaction info payload
-          required: true
-          schema:
-            $ref: '#/definitions/Transaction'
       produces:
         - application/json
       responses:
         '200':
-          description: Transaction info deleted successully
-          schema:
-            $ref: '#/definitions/Transaction'
+          description: Transaction deleted successully
         '400':
           description: Invalid Fields
         '500':
