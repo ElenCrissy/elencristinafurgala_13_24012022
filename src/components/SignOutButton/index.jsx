@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight} from "@fortawesome/free-solid-svg-icons";
 import {useDispatch} from "react-redux";
 import {logout} from "../../store/actions";
+import {useHistory} from "react-router";
 
 const SignOutButtonWrapper = styled.div`
   a{
@@ -24,9 +25,11 @@ const SignOutButtonWrapper = styled.div`
 
 const SignOutButton = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     const handleClick = () => {
         dispatch(logout)
+        history.push('/')
     }
 
     return(

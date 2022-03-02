@@ -8,7 +8,8 @@ export const initialState = {
         lastName: '',
         email: '',
         id: '',
-        isAuthenticated: false
+        isAuthenticated: false,
+        isRemembered : localStorage.getItem("isRemembered")
     },
     auth : {
         // jwt : '',

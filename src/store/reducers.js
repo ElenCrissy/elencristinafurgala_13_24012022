@@ -41,6 +41,7 @@ export const reducer = (state = initialState, action) => {
     }
     if(action.type === "logout") {
         localStorage.removeItem('jwt')
+        localStorage.removeItem('isRemembered')
         //unpack initialState changer jwt
         return initialState
     }

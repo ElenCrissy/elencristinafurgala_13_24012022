@@ -30,12 +30,13 @@ const Profile = () => {
     const history = useHistory()
     const user = useSelector(state => state.user)
     const isAuthenticated = user.isAuthenticated
+    const isRemembered = user.isRemembered
 
     useEffect(() => {
-        if(!isAuthenticated) {
+        if(!isRemembered && !isAuthenticated) {
             history.push(`/`)
         }
-    }, [isAuthenticated])
+    }, [isAuthenticated, isRemembered])
 
     return(
         <ProfileWrapper>

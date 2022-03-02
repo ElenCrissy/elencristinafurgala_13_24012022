@@ -48,7 +48,7 @@ const LoginForm = () => {
     let history = useHistory()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const isAuthenticated = useSelector(state => state.user.isConnected)
+    // const isAuthenticated = useSelector(state => state.user.isAuthenticated)
     const { isAuthenticated, id } = useSelector(state => state.user)
     const { jwt } = useSelector(state => state.auth)
 
@@ -58,6 +58,7 @@ const LoginForm = () => {
             const checkbox = document.getElementById("remember-me")
             if(checkbox.checked) {
                 localStorage.setItem('jwt', jwt)
+                localStorage.setItem('isRemembered', 'yes')
             }
         }
     }, [isAuthenticated])
