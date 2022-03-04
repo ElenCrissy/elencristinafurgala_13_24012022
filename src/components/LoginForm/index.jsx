@@ -41,7 +41,8 @@ const LoginButton = styled.button`
   color: #fff;
   cursor: pointer;
   text-decoration: underline;
-  border: none;`
+  border: none;
+`
 
 const LoginForm = () => {
     const dispatch = useDispatch()
